@@ -11,6 +11,7 @@ import ProductsPage from './pages/Offers';
 import HomePage from './pages/HomePage';
 import Profile from './pages/ProfilePage';
 import RegisterPage from './pages/RegisterPage';
+import TryHorizontal from './pages/TryHorizontal'
 
 // ----------------------------------------------------------------------
 
@@ -35,6 +36,10 @@ export default function Router() {
     },{
       path: 'register',
       element: <RegisterPage />,
+    },
+    {
+      path: 'hori',
+      element: <TryHorizontal />,
     },
     {
       element: <SimpleLayout />,

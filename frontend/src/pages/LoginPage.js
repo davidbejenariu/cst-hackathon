@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { styled } from '@mui/material/styles';
+import { Link as RouterLink } from 'react-router-dom';
 import { Link, Container, Typography, Divider, Stack, Button } from '@mui/material';
 // hooks
 import useResponsive from '../hooks/useResponsive';
@@ -46,7 +47,7 @@ export default function LoginPage() {
   return (
     <>
       <Helmet>
-        <title> Login | Minimal UI </title>
+        <title> Login | Catchy </title>
       </Helmet>
 
       <StyledRoot>
@@ -61,9 +62,7 @@ export default function LoginPage() {
         {mdUp && (
           <StyledSection>
             <Typography variant="h3" sx={{ px: 5, mt: 10, mb: 5 }}>
-              Hi, CIURI
-        
-
+              Welcome!        
             </Typography>
             <img src="/assets/illustrations/illustration_login.png" alt="login" />
           </StyledSection>
@@ -72,15 +71,15 @@ export default function LoginPage() {
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              Sign in to Catchy
             </Typography>
 
             <Typography variant="body2" sx={{ mb: 5 }}>
               Don’t have an account? {''}
-              <Link variant="subtitle2">Get started</Link>
+              <Link component={RouterLink} to="/register" variant="subtitle2">Get started</Link>
             </Typography>
 
-            <Stack direction="row" spacing={2}>
+            {/* <Stack direction="row" spacing={2}>
               <Button fullWidth size="large" color="inherit" variant="outlined">
                 <Iconify icon="eva:google-fill" color="#DF3E30" width={22} height={22} />
               </Button>
@@ -98,7 +97,7 @@ export default function LoginPage() {
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 OR
               </Typography>
-            </Divider>
+            </Divider> */}
 
             <LoginForm />
           </StyledContent>
