@@ -8,5 +8,6 @@ namespace backend.backend_DAL.Entities
         public List<UserRefreshToken> RefreshTokens { get; set; }
 
         public Profile? Profile { get; set; }
+        public Partner? Partner { get; set; }
     }
 }

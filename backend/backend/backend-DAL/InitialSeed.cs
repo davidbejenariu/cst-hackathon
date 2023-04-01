@@ -3,10 +3,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace backend.backend_DAL
 {
-    public class InitialSeed
-    {
-       
-        public readonly RoleManager<IdentityRole> _roleManager;
+    public class InitialSeed { 
+       public readonly RoleManager<IdentityRole> _roleManager;
 
         public InitialSeed(RoleManager<IdentityRole> roleManager)
         {
@@ -17,10 +15,10 @@ namespace backend.backend_DAL
         {
             string[] roleNames =
             {
-                "Admin",
-                "Partner",
-                "BasicUser"
-            };
+                    "Admin",
+                    "BasicUser",
+                    "Partner"
+                };
 
             foreach (var roleName in roleNames)
             {
@@ -31,7 +29,7 @@ namespace backend.backend_DAL
 
                 await _roleManager.CreateAsync(role);
             }
-        }
     }
+}
 
 }

@@ -16,5 +16,7 @@
 
         public virtual string UserId { get; set; }
         public virtual User User { get; set; }
+
+        public IList<ProfileOffer>? ProfileOffers { get; set; }
     }
 }
