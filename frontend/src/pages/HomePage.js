@@ -18,7 +18,7 @@ export default function DashboardAppPage() {
     <>
     
       <Helmet>
-        <title> Dashboard | Minimal UI </title>
+        <title> Home | Catchy </title>
       </Helmet>
     
       <Container maxWidth="xl">

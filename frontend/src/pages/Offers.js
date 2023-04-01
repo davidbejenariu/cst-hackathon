@@ -6,6 +6,7 @@ import { Container, Stack, Typography } from '@mui/material';
 import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
 // mock
 import PRODUCTS from '../_mock/products';
+//import HorizontalScroll from 'src/components/horizontal-scroll/HorizontalScroll';
 
 // ----------------------------------------------------------------------
 
@@ -20,10 +21,11 @@ export default function ProductsPage() {
     setOpenFilter(false);
   };
 
+
   return (
     <>
       <Helmet>
-        <title> Dashboard: Products | Minimal UI </title>
+        <title> Offers | Catchy </title>
       </Helmet>
 
       <Container>
@@ -44,6 +46,7 @@ export default function ProductsPage() {
 
         <ProductList products={PRODUCTS} />
         <ProductCartWidget />
+        
       </Container>
     </>
   );
