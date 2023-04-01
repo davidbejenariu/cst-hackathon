@@ -1,3 +1,6 @@
+using backend.backend_BLL.Helpers;
+using backend.backend_BLL.Interfaces;
+using backend.backend_BLL.Services;
 using backend.backend_DAL;
 using backend.backend_DAL.Entities;
 using Microsoft.AspNetCore.Authentication;
@@ -17,7 +20,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+builder.Services.AddTransient<ITokenHelper, TokenHelper>();
+builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<InitialSeed>();
 
 builder.Services.AddIdentity<User, IdentityRole>()

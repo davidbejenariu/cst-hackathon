@@ -19,6 +19,12 @@ namespace backend.backend_DAL
                    .WithMany(au => au.RefreshTokens)
                    .HasForeignKey(d => d.UserId)
                    .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Profile>()
+                    .HasOne(d => d.User)
+                    .WithOne(au => au.Profile)
+                    .HasForeignKey<Profile>(d => d.UserId)
+                    .OnDelete(DeleteBehavior.NoAction);
         }
 
     }
