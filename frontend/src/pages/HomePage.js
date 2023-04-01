@@ -11,7 +11,7 @@ import {
 } from '../sections/@dashboard/app';
 // ----------------------------------------------------------------------
 
-export default function DashboardAppPage() {
+export default function HomePage() {
   const theme = useTheme();
 
   return (
