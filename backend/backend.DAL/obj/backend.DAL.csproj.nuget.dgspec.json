@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend\\backend.csproj": {}
+    "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend.DAL\\backend.DAL.csproj": {}
   },
   "projects": {
-    "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend\\backend.csproj": {
+    "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend.DAL\\backend.DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend\\backend.csproj",
-        "projectName": "backend",
-        "projectPath": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend\\backend.csproj",
+        "projectUniqueName": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend.DAL\\backend.DAL.csproj",
+        "projectName": "backend.DAL",
+        "projectPath": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend.DAL\\backend.DAL.csproj",
         "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend\\obj\\",
+        "outputPath": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend.DAL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,24 +39,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Microsoft.AspNetCore.Authentication.JwtBearer": {
-              "target": "Package",
-              "version": "[6.0.7, )"
-            },
-            "Microsoft.AspNetCore.Authentication.OpenIdConnect": {
-              "target": "Package",
-              "version": "[6.0.7, )"
-            },
-            "Microsoft.Identity.Web": {
-              "target": "Package",
-              "version": "[1.16.0, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.2.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -69,9 +51,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
