@@ -6,7 +6,8 @@ import { Container, Stack, Typography } from '@mui/material';
 import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
 // mock
 import PRODUCTS from '../_mock/products';
-//import HorizontalScroll from 'src/components/horizontal-scroll/HorizontalScroll';
+
+
 
 // ----------------------------------------------------------------------
 
