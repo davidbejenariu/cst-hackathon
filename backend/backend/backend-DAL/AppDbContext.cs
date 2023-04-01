@@ -20,6 +20,6 @@ namespace backend.backend_DAL
                    .HasForeignKey(d => d.UserId)
                    .OnDelete(DeleteBehavior.Cascade);
         }
-        
+
     }
 }

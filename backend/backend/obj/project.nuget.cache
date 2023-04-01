@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "41A/MYXzonLwu6UFg8Bf9/VJLUei8Z76icOtGQZQotAvOSjXmuDzvsM36CaVBeRE/F/JDmJuCoE8XYV2zsoPAw==",
+  "dgSpecHash": "1Zsf+R/xlyayrjYFeslg61pI34fbfVfChYaKSbkxZfhyPxdPnmYEQJ1dWM9179+2/Q97etYrPd/UbP10DH7kvg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend\\backend.csproj",
+  "projectFilePath": "C:\\Users\\Miruna\\Documents\\GitHub\\Hackaton2\\cst-hackathon\\backend\\backend\\backend.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Miruna\\.nuget\\packages\\azure.core\\1.6.0\\azure.core.1.6.0.nupkg.sha512",
     "C:\\Users\\Miruna\\.nuget\\packages\\azure.identity\\1.3.0\\azure.identity.1.3.0.nupkg.sha512",
