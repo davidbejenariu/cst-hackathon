@@ -3,6 +3,8 @@ using backend.backend_BLL.Interfaces;
 using backend.backend_BLL.Services;
 using backend.backend_DAL;
 using backend.backend_DAL.Entities;
+using backend.backend_DAL.Interfaces;
+using backend.backend_DAL.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -11,9 +13,20 @@ using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Services.AddCors(options =>
+{
+    
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:4200")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                      });
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -22,6 +35,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<ITokenHelper, TokenHelper>();
 builder.Services.AddTransient<IAuthService, AuthService>();
+builder.Services.AddTransient<IAuthRepository, AuthRepository>();
+builder.Services.AddTransient<IProfileRepository, ProfileRepository>();
 builder.Services.AddTransient<InitialSeed>();
 
 builder.Services.AddIdentity<User, IdentityRole>()

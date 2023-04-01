@@ -10,6 +10,11 @@
 *.userosscache
 *.sln.docstates
 
+
+.vs/*
+backend/.vs/
+
+
 /backend/appsettings*.json
 !/backend/appsettings.Development.json
 

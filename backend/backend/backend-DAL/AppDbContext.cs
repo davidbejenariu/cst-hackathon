@@ -8,6 +8,8 @@ namespace backend.backend_DAL
     public class AppDbContext : IdentityDbContext<User, IdentityRole, string>
     {
         public DbSet<UserRefreshToken> RefreshTokens { get; set; }
+        public DbSet<Profile> Profiles { get; set; }
+
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
