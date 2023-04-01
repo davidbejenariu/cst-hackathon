@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet-async';
 import { useState } from 'react';
 // @mui
 import { Container, Stack, Typography } from '@mui/material';
+import { HorizontalScrollOffers, HorizontalScrollQuizzes } from '../components/horizontal-scroll';
 // components
 import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
 // mock
@@ -31,10 +32,10 @@ export default function ProductsPage() {
 
       <Container>
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Products
+          Offers
         </Typography>
 
-        <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
+        {/* <Stack direction="row" flexWrap="wrap-reverse" alignItems="center" justifyContent="flex-end" sx={{ mb: 5 }}>
           <Stack direction="row" spacing={1} flexShrink={0} sx={{ my: 1 }}>
             <ProductFilterSidebar
               openFilter={openFilter}
@@ -43,12 +44,19 @@ export default function ProductsPage() {
             />
             <ProductSort />
           </Stack>
-        </Stack>
+        </Stack> */}
+        <HorizontalScrollOffers/>
 
-        <ProductList products={PRODUCTS} />
-        <ProductCartWidget />
-        
+        <Typography variant="h4" sx={{ mb: 5, mt:6 }}>
+            Quizzes
+          </Typography>
+
+        <HorizontalScrollQuizzes/>
+        {/* <ProductList products={PRODUCTS} /> */}
+        {/* <ProductCartWidget /> */}
+
       </Container>
+      
     </>
   );
 }
