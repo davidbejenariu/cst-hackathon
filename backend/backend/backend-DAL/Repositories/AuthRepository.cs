@@ -7,10 +7,16 @@ namespace backend.backend_DAL.Repositories
     public class AuthRepository : IAuthRepository
     {
         private readonly UserManager<User> _userManager;
+        private readonly AppDbContext _appDbContext;
 
-        public AuthRepository(UserManager<User> userManager)
+        public AuthRepository(UserManager<User> userManager, AppDbContext appDbContext)
         {
             _userManager = userManager;
+            _appDbContext = appDbContext;
         }
+
+      
+
+     
     }
 }
