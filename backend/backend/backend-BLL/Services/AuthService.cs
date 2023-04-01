@@ -111,5 +111,56 @@ namespace backend.backend_BLL.Services
 
         }
     }
+
+    /*public async Task RegisterPartner(RegisterPartnerModel registerPartnerModel)
+    {
+
+        var user = new User
+        {
+            Email = registerModel.Email,
+            UserName = registerModel.Email
+        };
+        var result = await _userManager.CreateAsync(user, registerModel.Password);
+        var profile = new Profile
+        {
+            FirstName = registerModel.FirstName,
+            LastName = registerModel.LastName,
+            User = user,
+            UserId = user.Id
+        };
+        await _profileRepository.CreateProfile(profile);
+
+
+        if (result.Succeeded)
+        {
+            await _userManager.AddToRoleAsync(user, "BasicUser");
+
+
+            //await SaveChangesAsync();
+
+            *//*  SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
+
+              smtpClient.Credentials = new System.Net.NetworkCredential("blooddonationtest@gmail.com", "nvfayjhmcruemsvf");
+              // smtpClient.UseDefaultCredentials = true; // uncomment if you don't want to use the network credentials
+              smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+              smtpClient.EnableSsl = true;
+              MailMessage mail = new MailMessage();
+              mail.Subject = "Thank you for register";
+              mail.Body = "<p>Hello,</p><br><p>Welcome to Blood-Donation-Platform</p>";
+              mail.IsBodyHtml = true;
+              //Setting From , To and CC
+              mail.From = new MailAddress("blooddonationtest@gmail.com", "MyWeb Site");
+              mail.To.Add(new MailAddress(profile.EmailAddress));*//*
+            //mail.CC.Add(new MailAddress("MyEmailID@gmail.com"));
+
+            //smtpClient.Send(mail);
+        }
+        else
+        {
+            throw new Exception(String.Join(",", result.Errors.Select(x => x.Code)));
+        }
+
+    }*/
+//}
 }
 

@@ -33,6 +33,11 @@ namespace backend.Controllers
             }
 
         }
+       /* [HttpPost("RegisterPartner")]
+        public async Task<IActionResult> RegisterPartner([FromBody] RegisterPartnerModel)
+        {
+
+        }*/
 
         [HttpPost("Login")]
 
