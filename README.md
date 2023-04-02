@@ -6,6 +6,8 @@
 
 ![](https://github.com/davidbejenariu/cst-hackathon/blob/main/Assets/Catchy_Presentation/1_README.png)
 
+## Click ![here](https://www.canva.com/design/DAFe5rfcTGQ/kpxqLw2SddIrfDXiv1Is2g/viewutm_content=DAFe5rfcTGQ&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) to access the pitch.
+
 ## Our approach
 
 ### Mission
