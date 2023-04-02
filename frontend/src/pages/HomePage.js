@@ -5,6 +5,10 @@ import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+import SurveyLogo from '../images/Icons/580745-200.png'
+import QuizLogo from '../images/Icons/3524335.png'
+import StreakLogo from '../images/Icons/fire_10.png'
 // components
 import Iconify from '../components/iconify';
 // sections
@@ -27,7 +31,7 @@ export default function HomePage() {
         <Typography variant="h4" sx={{ mb: 5 }}>
           Hi, Welcome back
         </Typography>
-        <Grid container style={{display: 'flex', flexDirection: 'row' }}>
+        <Grid container style={{display: 'flex', flexDirection: 'row', width:'80vw' }}>
           <Grid item >
             <div style={{width: '1.9rem', height: '1.9rem'}}>
               {
@@ -68,15 +72,15 @@ export default function HomePage() {
        
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Surveys Completed" total={2} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Surveys Completed" total={2} iconpath={SurveyLogo}  />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Quizez Completed" total={4} color="info" icon={'ant-design:apple-filled'} />
+            <AppWidgetSummary title="Quizez Completed" total={4} color="info" iconpath={QuizLogo} />
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Daily streak" total={5} color="warning" icon={'ant-design:windows-filled'} />
+            <AppWidgetSummary title="Week Streak" total={5} color="warning" iconpath={StreakLogo} />
           </Grid>
         </Grid>
       </Container>
