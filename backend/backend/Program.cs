@@ -18,14 +18,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddCors(options =>
 {
-    
     options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy =>
-                      {
-                          policy.WithOrigins("http://localhost:4200")
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
-                      });
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:4200")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        });
 });
 
 builder.Services.AddControllers();
@@ -39,13 +38,12 @@ builder.Services.AddTransient<IAuthRepository, AuthRepository>();
 builder.Services.AddTransient<IProfileRepository, ProfileRepository>();
 builder.Services.AddTransient<InitialSeed>();
 
-builder.Services.AddIdentity<User, IdentityRole>()
-               .AddEntityFrameworkStores<AppDbContext>()
-               .AddDefaultTokenProviders();
+builder.Services.AddIdentity<User, Role>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddAuthentication(options =>
 {
@@ -89,7 +87,7 @@ options.WithOrigins("*")
 
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetService<InitialSeed>();
-seeder.CreateRoles();
+// seeder.CreateRoles();
 
 
 // Configure the HTTP request pipeline.

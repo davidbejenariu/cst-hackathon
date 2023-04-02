@@ -20,7 +20,7 @@ namespace backend.backend_BLL.Helpers
             _configuration = configuration;
         }
 
-        public async Task<String> CreateAccessToken(User _User)
+        public async Task<string> CreateAccessToken(User _User)
         {
             var userId = _User.Id.ToString();
             var userName = _User.UserName;
@@ -48,8 +48,6 @@ namespace backend.backend_BLL.Helpers
                 SigningCredentials = creds,
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"]
-
-
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -70,7 +68,6 @@ namespace backend.backend_BLL.Helpers
                 new Claim(ClaimTypes.Name, userName)
             };
 
-
             var secret = _configuration["Jwt:Key"];
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
@@ -84,8 +81,6 @@ namespace backend.backend_BLL.Helpers
                 SigningCredentials = creds,
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"]
-
-
             };
 
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -93,9 +88,7 @@ namespace backend.backend_BLL.Helpers
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
-
         }
-
 
         public ClaimsPrincipal GetPrincipalFromRefreshToken(string refreshToken)
         {
