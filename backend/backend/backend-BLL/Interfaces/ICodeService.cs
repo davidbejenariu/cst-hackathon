@@ -5,6 +5,6 @@ namespace backend.backend_BLL.Interfaces
         public interface ICodeService
         {
             Task Create(CodeModel code);
-            Task<List<string>> GetCodes();
+            Task<List<Guid>> GetCodes();
         }
 }

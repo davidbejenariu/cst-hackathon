@@ -12,8 +12,8 @@ using backend.backend_DAL;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230401174006_AddedEntities")]
-    partial class AddedEntities
+    [Migration("20230401183026_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

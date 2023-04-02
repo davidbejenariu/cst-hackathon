@@ -6,6 +6,5 @@ namespace backend.backend_BLL.Interfaces
     {
         Task Register(RegisterModel registerModel);
         Task<LoginResult> Login(LoginModel loginModel);
-
     }
 }
