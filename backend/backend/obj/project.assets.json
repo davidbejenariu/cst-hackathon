@@ -2970,19 +2970,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\david\\.nuget\\packages\\": {}
+    "C:\\Users\\ninac\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend\\backend.csproj",
+      "projectUniqueName": "D:\\Documents\\Acte_facultate\\An3\\Hackathon\\cst-hackathon\\backend\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\david\\Desktop\\projects\\cst-hackathon\\backend\\backend\\obj\\",
+      "projectPath": "D:\\Documents\\Acte_facultate\\An3\\Hackathon\\cst-hackathon\\backend\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\ninac\\.nuget\\packages\\",
+      "outputPath": "D:\\Documents\\Acte_facultate\\An3\\Hackathon\\cst-hackathon\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ninac\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
