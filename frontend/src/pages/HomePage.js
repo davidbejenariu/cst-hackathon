@@ -29,7 +29,7 @@ export default function HomePage() {
     
       <Container maxWidth="xl">
         <Typography variant="h4" sx={{ mb: 5 }}>
-          Hi, Welcome back!
+          Hi, welcome back!
         </Typography>
         <Grid container style={{display: 'flex', flexDirection: 'row', width:'80vw' }}>
           <Grid item >

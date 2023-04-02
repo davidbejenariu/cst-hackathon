@@ -1,11 +1,19 @@
 import { useState } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
-import {  Grid, Container, Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
+import {  Grid, Button, CardActionArea, CardActions, Card, Container, Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Tooltip from '@mui/material/Tooltip';
+
 // mocks_
 import account from '../../../_mock/account';
+import SurveyLogo from '../../../images/Icons/580745-200.png'
+import QuizLogo from '../../../images/Icons/3524335.png'
+import StreakLogo from '../../../images/Icons/fire_10.png'
+
 
 // ----------------------------------------------------------------------
 
@@ -39,6 +47,7 @@ export default function AccountPopover() {
 
   return (
     <>
+    <Tooltip title="User Info">
       <IconButton
         onClick={handleOpen}
         sx={{
@@ -58,7 +67,7 @@ export default function AccountPopover() {
       >
         <Avatar src={account.photoURL} alt="photoURL" />
       </IconButton>
-
+      </Tooltip>
       <Popover
 
         
@@ -131,6 +140,20 @@ export default function AccountPopover() {
         </Grid>
 
         <Divider sx={{ borderStyle: 'dashed' }} />
+        <div style={{display: 'flex', flexDirection: 'row', alignContent:'center', marginLeft:'2rem', marginTop:'-1.8rem'}}>
+          <img src = {SurveyLogo} alt='img' style = {{width:'2.0rem', height:'2.0rem'}}/>
+          <p style={{marginTop:'0.2rem'}}>2 surveys</p>
+        </div>
+        <Divider sx={{ borderStyle: 'dashed' }} />
+        <div style={{display: 'flex', flexDirection: 'row', alignContent:'center', marginLeft:'2rem'}}>
+          <img src = {QuizLogo} alt='img' style = {{width:'2.0rem', height:'2.0rem'}}/>
+          <p style={{marginTop:'0.2rem'}}>4 quizzes</p>
+        </div>
+        <Divider sx={{ borderStyle: 'dashed' }} />
+        <div style={{display: 'flex', flexDirection: 'row', alignContent:'center', marginLeft:'2rem'}}>
+          <img src = {StreakLogo} alt='img' style = {{width:'2.0rem', height:'2.0rem'}}/>
+          <p style={{marginTop:'0.2rem'}}>5 days streak</p>
+        </div>
         <Divider sx={{ borderStyle: 'dashed' }} />
 
       </Popover>

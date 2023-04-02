@@ -30,12 +30,7 @@ const navConfig = [
     title: 'log out',
     path: '/login',
     icon: icon('ic_lock'),
-  },
-  // {
-  //   title: 'Not found',
-  //   path: '/404',
-  //   icon: icon('ic_disabled'),
-  // },
+  }
 ];
 
 export default navConfig;

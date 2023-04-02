@@ -44,26 +44,26 @@ export default function ProfilePage() {
                     fullWidth
                     label="First Name"
                     name="firstname"
-                    value="Katarina"
+                    value="Jaydon"
                     // variant="outlined"
                   />
                   <TextField
                     fullWidth
                     label="Last Name"
                     name="lastname"
-                    value="Smith"
+                    value="Frankie"
                     // variant="outlined"
                   />
                   <TextField
                     fullWidth
                     label="Email Address"
                     name="email"
-                    value="katrinasmith@gmail.com"
+                    value="jaydonfrankie@gmail.com"
                   />
                   <TextField
                     fullWidth
                     label="Phone Number"
-                    name="email"
+                    name="phone"
                     value="555-0129"
                   />
                 </Stack>
