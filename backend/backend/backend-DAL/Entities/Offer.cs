@@ -2,7 +2,7 @@
 {
     public class Offer
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
 
         public DateTime CreationDate { get; set; }
         public DateTime? StartDate { get; set; }
@@ -19,7 +19,7 @@
         public virtual Product Product { get; set; }
 
         // M - 1: Offer - Partner
-        public int PartnerId { get; set; }
+        public string PartnerId { get; set; }
         public virtual Partner? Partner { get; set; }
 
         //M-M Profile-Offer

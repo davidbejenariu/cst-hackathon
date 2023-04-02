@@ -5,6 +5,6 @@ namespace backend.backend_BLL.Models
     public class CodeModel
     {
         public string Content { get; set; }
-        public int ProductId { get; set; }
+        public string ProductId { get; set; }
     }
 }

@@ -29,7 +29,6 @@ namespace backend.backend_DAL
 
                 await _roleManager.CreateAsync(role);
             }
+        }
     }
-}
-
 }

@@ -82,7 +82,7 @@ var app = builder.Build();
 
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetService<InitialSeed>();
-/*seeder.CreateRoles();*/
+// seeder.CreateRoles();
 
 
 // Configure the HTTP request pipeline.

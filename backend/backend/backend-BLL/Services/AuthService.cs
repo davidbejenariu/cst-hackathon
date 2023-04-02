@@ -71,7 +71,6 @@ namespace backend.backend_BLL.Services
             {
                 FirstName = registerModel.FirstName,
                 LastName = registerModel.LastName,
-                User = user,
                 UserId = user.Id
             };
             await _profileRepository.CreateProfile(profile);

@@ -12,8 +12,8 @@ using backend.backend_DAL;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230402023852_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230402040033_UserRole1")]
+    partial class UserRole1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,11 +26,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.Code", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -41,8 +39,9 @@ namespace backend.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProductId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -53,11 +52,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.Offer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<decimal>("CarbonFootprint")
                         .HasColumnType("decimal(8,2)");
@@ -65,7 +62,7 @@ namespace backend.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2023, 4, 2, 2, 38, 52, 782, DateTimeKind.Utc).AddTicks(3213));
+                        .HasDefaultValue(new DateTime(2023, 4, 2, 4, 0, 33, 189, DateTimeKind.Utc).AddTicks(84));
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime");
@@ -78,8 +75,9 @@ namespace backend.Migrations
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
-                    b.Property<int>("PartnerId")
-                        .HasColumnType("int");
+                    b.Property<string>("PartnerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("StartDate")
                         .HasColumnType("datetime");
@@ -93,11 +91,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.Partner", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(100)");
@@ -117,11 +113,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.Product", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -131,24 +125,23 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("OfferId")
-                        .HasColumnType("int");
+                    b.Property<string>("OfferId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OfferId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[OfferId] IS NOT NULL");
 
                     b.ToTable("Products");
                 });
 
             modelBuilder.Entity("backend.backend_DAL.Entities.Profile", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime?>("BirthDate")
                         .HasColumnType("datetime");
@@ -164,8 +157,8 @@ namespace backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("PartnerId")
-                        .HasColumnType("int");
+                    b.Property<string>("PartnerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(20)");
@@ -192,22 +185,22 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.ProfileOffer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsRedeemed")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
 
-                    b.Property<int>("OfferId")
-                        .HasColumnType("int");
+                    b.Property<string>("OfferId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("ProfileId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProfileId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -221,6 +214,7 @@ namespace backend.Migrations
             modelBuilder.Entity("backend.backend_DAL.Entities.Role", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
@@ -247,44 +241,43 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.Survey", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("OfferId")
-                        .HasColumnType("int");
+                    b.Property<string>("OfferId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OfferId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[OfferId] IS NOT NULL");
 
                     b.ToTable("Surveys");
                 });
 
             modelBuilder.Entity("backend.backend_DAL.Entities.SurveyAnswer", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Answer")
                         .IsRequired()
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("ProfileId")
-                        .HasColumnType("int");
+                    b.Property<string>("ProfileId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("QuestionId")
-                        .HasColumnType("int");
+                    b.Property<string>("QuestionId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -297,18 +290,17 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.SurveyQuestion", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Question")
                         .IsRequired()
                         .HasColumnType("nvarchar(1000)");
 
-                    b.Property<int>("SurveyId")
-                        .HasColumnType("int");
+                    b.Property<string>("SurveyId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -320,6 +312,7 @@ namespace backend.Migrations
             modelBuilder.Entity("backend.backend_DAL.Entities.User", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("AccessFailedCount")
@@ -387,11 +380,9 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.UserRefreshToken", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("RefreshToken")
                         .IsRequired()
@@ -411,17 +402,16 @@ namespace backend.Migrations
             modelBuilder.Entity("backend.backend_DAL.Entities.UserRole", b =>
                 {
                     b.Property<string>("UserId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("RoleId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("UserId", "RoleId");
 
                     b.HasIndex("RoleId");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
@@ -479,9 +469,11 @@ namespace backend.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
@@ -501,12 +493,15 @@ namespace backend.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
                     b.Property<string>("UserId")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
@@ -543,9 +538,7 @@ namespace backend.Migrations
                 {
                     b.HasOne("backend.backend_DAL.Entities.Offer", "Offer")
                         .WithOne("Product")
-                        .HasForeignKey("backend.backend_DAL.Entities.Product", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("backend.backend_DAL.Entities.Product", "OfferId");
 
                     b.Navigation("Offer");
                 });
@@ -590,9 +583,7 @@ namespace backend.Migrations
                 {
                     b.HasOne("backend.backend_DAL.Entities.Offer", "Offer")
                         .WithOne("Survey")
-                        .HasForeignKey("backend.backend_DAL.Entities.Survey", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("backend.backend_DAL.Entities.Survey", "OfferId");
 
                     b.Navigation("Offer");
                 });
@@ -647,14 +638,14 @@ namespace backend.Migrations
                         .IsRequired();
 
                     b.HasOne("backend.backend_DAL.Entities.Role", "Role")
-                        .WithOne()
-                        .HasForeignKey("backend.backend_DAL.Entities.UserRole", "UserId")
+                        .WithMany("UserRole")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("backend.backend_DAL.Entities.User", "User")
-                        .WithOne()
-                        .HasForeignKey("backend.backend_DAL.Entities.UserRole", "UserId")
+                        .WithMany("UserRole")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -729,6 +720,11 @@ namespace backend.Migrations
                     b.Navigation("SurveyAnswers");
                 });
 
+            modelBuilder.Entity("backend.backend_DAL.Entities.Role", b =>
+                {
+                    b.Navigation("UserRole");
+                });
+
             modelBuilder.Entity("backend.backend_DAL.Entities.Survey", b =>
                 {
                     b.Navigation("Questions");
@@ -744,6 +740,8 @@ namespace backend.Migrations
                     b.Navigation("Profile");
 
                     b.Navigation("RefreshTokens");
+
+                    b.Navigation("UserRole");
                 });
 #pragma warning restore 612, 618
         }

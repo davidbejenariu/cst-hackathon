@@ -3,6 +3,7 @@ using backend.backend_DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace backend.backend_DAL
 {
@@ -37,6 +38,12 @@ namespace backend.backend_DAL
         {
             base.OnModelCreating(modelBuilder);
 
+            var keysProperties = modelBuilder.Model.GetEntityTypes().Select(x => x.FindPrimaryKey()).SelectMany(x => x.Properties);
+            foreach (var property in keysProperties)
+            {
+                property.ValueGenerated = ValueGenerated.OnAdd;
+            }
+
             modelBuilder.Entity<UserRefreshToken>()
                 .HasOne(d => d.User)
                 .WithMany(au => au.RefreshTokens)
@@ -44,13 +51,15 @@ namespace backend.backend_DAL
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<UserRole>()
-                .HasOne<User>(x => x.User)
-                .WithOne().HasForeignKey<UserRole>(x => x.UserId)
+                .HasOne(x => x.User)
+                .WithMany(x => x.UserRole)
+                .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<UserRole>()
-                .HasOne<Role>(x => x.Role)
-                .WithOne().HasForeignKey<UserRole>(x => x.UserId)
+                .HasOne(x => x.Role)
+                .WithMany(x => x.UserRole)
+                .HasForeignKey(x => x.RoleId)
                 .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.ApplyConfiguration(new CodeConfiguration());

@@ -14,6 +14,9 @@ namespace backend.backend_DAL.Configurations
                 .HasColumnType("nvarchar(100)")
                 .IsRequired(true);
 
+            builder.Property(x => x.OfferId)
+                .IsRequired(false);
+
             builder.HasOne(x => x.Offer)
                 .WithOne(x => x.Survey)
                 .HasForeignKey<Survey>(x => x.OfferId);

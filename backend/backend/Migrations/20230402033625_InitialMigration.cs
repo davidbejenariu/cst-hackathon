@@ -53,8 +53,7 @@ namespace backend.Migrations
                 name: "Partners",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     Website = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(100)", nullable: true)
@@ -178,8 +177,7 @@ namespace backend.Migrations
                 name: "RefreshTokens",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     RefreshToken = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -198,15 +196,14 @@ namespace backend.Migrations
                 name: "Offers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    CreationDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2023, 4, 2, 2, 38, 52, 782, DateTimeKind.Utc).AddTicks(3213)),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CreationDate = table.Column<DateTime>(type: "datetime", nullable: false, defaultValue: new DateTime(2023, 4, 2, 3, 36, 25, 217, DateTimeKind.Utc).AddTicks(3449)),
                     StartDate = table.Column<DateTime>(type: "datetime", nullable: true),
                     EndDate = table.Column<DateTime>(type: "datetime", nullable: true),
                     CarbonFootprint = table.Column<decimal>(type: "decimal(8,2)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
                     Image = table.Column<string>(type: "nvarchar(100)", nullable: true),
-                    PartnerId = table.Column<int>(type: "int", nullable: false)
+                    PartnerId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -223,8 +220,7 @@ namespace backend.Migrations
                 name: "Profiles",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(50)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(20)", nullable: true),
@@ -233,7 +229,7 @@ namespace backend.Migrations
                     Streak = table.Column<int>(type: "int", nullable: true),
                     Image = table.Column<string>(type: "nvarchar(100)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    PartnerId = table.Column<int>(type: "int", nullable: false)
+                    PartnerId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -255,11 +251,10 @@ namespace backend.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    OfferId = table.Column<int>(type: "int", nullable: false)
+                    OfferId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -268,18 +263,16 @@ namespace backend.Migrations
                         name: "FK_Products_Offers_OfferId",
                         column: x => x.OfferId,
                         principalTable: "Offers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Surveys",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", nullable: false),
-                    OfferId = table.Column<int>(type: "int", nullable: false)
+                    OfferId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -288,19 +281,17 @@ namespace backend.Migrations
                         name: "FK_Surveys_Offers_OfferId",
                         column: x => x.OfferId,
                         principalTable: "Offers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "ProfileOffers",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     IsRedeemed = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    ProfileId = table.Column<int>(type: "int", nullable: false),
-                    OfferId = table.Column<int>(type: "int", nullable: false)
+                    ProfileId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    OfferId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -323,11 +314,10 @@ namespace backend.Migrations
                 name: "Codes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(100)", nullable: false),
                     IsUsed = table.Column<bool>(type: "bit", nullable: false, defaultValue: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
+                    ProductId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -344,10 +334,9 @@ namespace backend.Migrations
                 name: "SurveyQuestion",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Question = table.Column<string>(type: "nvarchar(1000)", nullable: false),
-                    SurveyId = table.Column<int>(type: "int", nullable: false)
+                    SurveyId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -364,11 +353,10 @@ namespace backend.Migrations
                 name: "SurveyAnswer",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Answer = table.Column<string>(type: "nvarchar(1000)", nullable: false),
-                    QuestionId = table.Column<int>(type: "int", nullable: false),
-                    ProfileId = table.Column<int>(type: "int", nullable: false)
+                    QuestionId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProfileId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -446,7 +434,8 @@ namespace backend.Migrations
                 name: "IX_Products_OfferId",
                 table: "Products",
                 column: "OfferId",
-                unique: true);
+                unique: true,
+                filter: "[OfferId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ProfileOffers_OfferId",
@@ -493,7 +482,8 @@ namespace backend.Migrations
                 name: "IX_Surveys_OfferId",
                 table: "Surveys",
                 column: "OfferId",
-                unique: true);
+                unique: true,
+                filter: "[OfferId] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

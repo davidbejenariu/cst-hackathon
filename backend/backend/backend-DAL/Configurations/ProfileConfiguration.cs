@@ -38,6 +38,9 @@ namespace backend.backend_DAL.Configurations
                 .HasColumnType("nvarchar(100)")
                 .IsRequired(false);
 
+            builder.Property(x => x.PartnerId)
+                .IsRequired(false);
+
             builder.HasOne(x => x.User)
                 .WithOne(x => x.Profile)
                 .HasForeignKey<Profile>(x => x.UserId);

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend.backend_DAL;
 
@@ -11,9 +12,10 @@ using backend.backend_DAL;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230402033625_InitialMigration")]
+    partial class InitialMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,7 +62,7 @@ namespace backend.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2023, 4, 2, 4, 5, 40, 270, DateTimeKind.Utc).AddTicks(2928));
+                        .HasDefaultValue(new DateTime(2023, 4, 2, 3, 36, 25, 217, DateTimeKind.Utc).AddTicks(3449));
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime");
@@ -411,6 +413,9 @@ namespace backend.Migrations
 
                     b.HasIndex("RoleId");
 
+                    b.HasIndex("UserId")
+                        .IsUnique();
+
                     b.ToTable("AspNetUserRoles", (string)null);
                 });
 
@@ -629,15 +634,21 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.UserRole", b =>
                 {
-                    b.HasOne("backend.backend_DAL.Entities.Role", "Role")
-                        .WithMany("UserRole")
+                    b.HasOne("backend.backend_DAL.Entities.Role", null)
+                        .WithMany()
                         .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("backend.backend_DAL.Entities.Role", "Role")
+                        .WithOne()
+                        .HasForeignKey("backend.backend_DAL.Entities.UserRole", "UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("backend.backend_DAL.Entities.User", "User")
-                        .WithMany("UserRole")
-                        .HasForeignKey("UserId")
+                        .WithOne()
+                        .HasForeignKey("backend.backend_DAL.Entities.UserRole", "UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
@@ -712,11 +723,6 @@ namespace backend.Migrations
                     b.Navigation("SurveyAnswers");
                 });
 
-            modelBuilder.Entity("backend.backend_DAL.Entities.Role", b =>
-                {
-                    b.Navigation("UserRole");
-                });
-
             modelBuilder.Entity("backend.backend_DAL.Entities.Survey", b =>
                 {
                     b.Navigation("Questions");
@@ -732,8 +738,6 @@ namespace backend.Migrations
                     b.Navigation("Profile");
 
                     b.Navigation("RefreshTokens");
-
-                    b.Navigation("UserRole");
                 });
 #pragma warning restore 612, 618
         }
