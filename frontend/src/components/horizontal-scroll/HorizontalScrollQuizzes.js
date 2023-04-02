@@ -8,7 +8,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import { data } from '../../_mock/offers-mock';
+import { data } from '../../_mock/quizzes-mock';
 
 
 
@@ -78,17 +78,16 @@ export default function HorizontalScroll() {
                 />
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                    Lizard
+                    {item.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
+                    <Typography variant="body2" color="text.secondary" >
+                    {item.description}
                     </Typography>
                 </CardContent>
                 </CardActionArea>
                 <CardActions>
                 <Button size="small" color="primary" onClick={handleClick}>
-                    Take the survey
+                    Take the quiz
                 </Button>
                 </CardActions>
             </Card>
