@@ -14,6 +14,8 @@
         public long? Streak { get; set; }
         public string? Image { get; set; }
 
+        public int PartnerId { get; set; }
+        public virtual Partner Partner { get; set; }
         public virtual string UserId { get; set; }
         public virtual User User { get; set; }
 

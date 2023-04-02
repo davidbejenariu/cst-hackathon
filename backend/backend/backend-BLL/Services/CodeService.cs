@@ -22,7 +22,7 @@ namespace backend.backend_BLL.Services
             var newCode = new Code
             {
                 Id = new Guid(),
-                Name = code.Content,
+                Content = code.Content,
                 ProductId = code.ProductId,
                 IsUsed = false,
                 // am mai fi avut product...
@@ -39,13 +39,13 @@ namespace backend.backend_BLL.Services
             await _codeRepository.Create(newCode);
 
         }
-        public async Task<List<Guid>> GetCodes()
+        public async Task<List<string>> GetCodes()
         {
             var codes = await _codeRepository.GetAllCodes();
-            var list = new List<Guid>();
+            var list = new List<string>();
             foreach (var code in codes)
             {
-                list.Add(code.Id);
+                list.Add(code.Content);
             }
             return list;
 
