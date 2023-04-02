@@ -1,60 +1,62 @@
-import { Navigate, useRoutes } from 'react-router-dom';
+import { Navigate, useRoutes } from "react-router-dom";
 // layouts
-import NavBar from './layouts/dashboard/NavBar';
-import SimpleLayout from './layouts/simple';
+import NavBar from "./layouts/dashboard/NavBar";
+import SimpleLayout from "./layouts/simple";
 //
-import BlogPage from './pages/BlogPage';
-import LeaderboardPage from './pages/LeaderboardPage';
-import LoginPage from './pages/LoginPage';
-import Page404 from './pages/Page404';
-import ProductsPage from './pages/Offers';
-import HomePage from './pages/HomePage';
-import Profile from './pages/ProfilePage';
-import RegisterPage from './pages/RegisterPage';
-import SurveyPage from './pages/SurveyPage';
-import QuizPage from './pages/QuizPage';
+import BlogPage from "./pages/BlogPage";
+import LeaderboardPage from "./pages/LeaderboardPage";
+import LoginPage from "./pages/LoginPage";
+import Page404 from "./pages/Page404";
+import ProductsPage from "./pages/Offers";
+import HomePage from "./pages/HomePage";
+import Profile from "./pages/ProfilePage";
+import RegisterPage from "./pages/RegisterPage";
+import SurveyPage from "./pages/SurveyPage";
+import QuizPage from "./pages/QuizPage";
 
 // ----------------------------------------------------------------------
 
 export default function Router() {
   const routes = useRoutes([
-
     {
-      path: '/',
-      element: <NavBar/>,
+      path: "/",
+      element: <NavBar />,
       children: [
         { element: <Navigate to="/home" />, index: true },
-        { path: 'home', element: <HomePage /> },
-        { path: 'profile', element: <Profile /> },
-        { path: 'my-offers', element: <ProductsPage /> },
-        { path: 'blog-page', element: <BlogPage /> },
-        { path: 'leaderboard', element: <LeaderboardPage /> }
+        { path: "home", element: <HomePage /> },
+        { path: "profile", element: <Profile /> },
+        { path: "/my-offers", element: <ProductsPage /> },
+        { path: "/my-offers/survey", element: <SurveyPage /> },
+        { path: "blog-page", element: <BlogPage /> },
+        { path: "leaderboard", element: <LeaderboardPage /> },
       ],
     },
     {
-      path: 'login',
+      path: "login",
       element: <LoginPage />,
-    },{
-      path: 'survey',
+    },
+    {
+      path: "survey",
       element: <SurveyPage />,
-    },{
-      path: 'quiz',
+    },
+    {
+      path: "quiz",
       element: <QuizPage />,
     },
     {
-      path: 'register',
+      path: "register",
       element: <RegisterPage />,
     },
     {
       element: <SimpleLayout />,
       children: [
         { element: <Navigate to="/home" />, index: true },
-        { path: '404', element: <Page404 /> },
-        { path: '*', element: <Navigate to="/404" /> },
+        { path: "404", element: <Page404 /> },
+        { path: "*", element: <Navigate to="/404" /> },
       ],
     },
     {
-      path: '*',
+      path: "*",
       element: <Navigate to="/404" replace />,
     },
   ]);

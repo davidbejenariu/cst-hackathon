@@ -7,14 +7,18 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 import { data } from '../../_mock/offers-mock';
 
 
 
 export default function HorizontalScroll() {
-
+  const navigate = useNavigate();
   const [opacity, setOpacity] = useState("0.5")
-
+  
+  const handleClick = () => {
+    navigate("/my-offers/survey", { replace: true });
+  };
   const sliderStyle = {
     cursor: "pointer",
     opacity: `${opacity}`
@@ -83,7 +87,7 @@ export default function HorizontalScroll() {
                 </CardContent>
                 </CardActionArea>
                 <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={handleClick}>
                     Take the survey
                 </Button>
                 </CardActions>
