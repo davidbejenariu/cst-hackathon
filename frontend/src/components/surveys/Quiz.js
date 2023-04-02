@@ -1,51 +1,90 @@
 import { on } from 'events'
 import React, { useState } from 'react'
 import Button from '@mui/material/Button'
+import { styled } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
+import { purple } from '@mui/material/colors';
 
 const quiz = {
     topic: 'Javascript',
     level: 'Beginner',
-    totalQuestions: 10,
+    totalQuestions: 4,
     perQuestionScore: 5,
     totalTime: 60, // in seconds
     questions: [
       {
         question:
-          'Which function is used to serialize an object into a JSON string in Javascript?',
-        choices: ['stringify()', 'parse()', 'convert()', 'None of the above'],
+          'What country consumes the most energy in the world?',
+        choices: ['Russia', 'China', 'the United States', 'Canada'],
         type: 'MCQs',
-        correctAnswer: 'stringify()',
+        correctAnswer: 'the United States',
       },
       {
         question:
-          'Which of the following keywords is used to define a variable in Javascript?',
-        choices: ['var', 'let', 'var and let', 'None of the above'],
+          'What country produces the most energy in the world?',
+        choices: ['Iraq', 'China', 'the United States', 'Russia'],
         type: 'MCQs',
-        correctAnswer: 'var and let',
+        correctAnswer: 'China',
       },
       {
         question:
-          'Which of the following methods can be used to display data in some form using Javascript?',
+          'What is the leading source of energy in the United States?',
         choices: [
-          'document.write()',
-          'console.log()',
-          'window.alert',
-          'All of the above',
+          'Coal',
+          'Oil',
+          'Nuclear power',
+          'Natural gas',
         ],
         type: 'MCQs',
-        correctAnswer: 'All of the above',
+        correctAnswer: 'Natural gas',
       },
       {
         question: 'How can a datatype be declared to be a constant type?',
-        choices: ['const', 'var', 'let', 'constant'],
+        choices: ['Hydropower', 'Petroleum', 'Biomass', 'Solar power'],
         type: 'MCQs',
-        correctAnswer: 'const',
+        correctAnswer: 'Biomass',
       },
     ],
   }
   
   
   export const Quiz = () => {
+    const BootstrapButton = styled(Button)({
+      boxShadow: 'none',
+      textTransform: 'none',
+      fontSize: 16,
+      padding: '6px 12px',
+      border: '1px solid',
+      lineHeight: 1.5,
+      backgroundColor: '#0063cc',
+      borderColor: '#0063cc',
+      fontFamily: [
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        '"Helvetica Neue"',
+        'Arial',
+        'sans-serif',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
+      ].join(','),
+      '&:hover': {
+        backgroundColor: '#0069d9',
+        borderColor: '#0062cc',
+        boxShadow: 'none',
+      },
+      '&:active': {
+        boxShadow: 'none',
+        backgroundColor: '#0062cc',
+        borderColor: '#005cbf',
+      },
+      '&:focus': {
+        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.5)',
+      },
+    });
+    
     const [activeQuestion, setActiveQuestion] = React.useState(0)
     const [selectedAnswer, setSelectedAnswer] = React.useState('')
     const [showResult, setShowResult] = React.useState(false)
@@ -109,23 +148,21 @@ const quiz = {
             <h2>{question}</h2>
             <ul>
               {choices.map((answer, index) => (
-                <Button role = "button" onClick={() => onAnswerSelected(answer, index)} onKeyDown={(answer, index)}
+                <BootstrapButton style={{background:'#c1dab7', display:'block', margin:'0.3rem' }} role = "button" onClick={() => onAnswerSelected(answer, index)} onKeyDown={(answer, index)}
                   key={answer}
                   className={
                     selectedAnswerIndex === index ? 'selected-answer' : null
                   }
                 >
                   {answer}
-                </Button>
+                </BootstrapButton>
               ))}
             </ul>
             <div className="flex-right">
-              <button
-                onClick={onClickNext}
-                disabled={selectedAnswerIndex === null}
-              >
+              <BootstrapButton onClick={onClickNext} style={{margin:'1rem'}}
+                disabled={selectedAnswerIndex === null} variant="contained" disableRipple>
                 {activeQuestion === questions.length - 1 ? 'Finish' : 'Next'}
-              </button>
+              </BootstrapButton>
             </div>
           </div>
         ) : (
@@ -143,6 +180,7 @@ const quiz = {
             <p>
               Wrong Answers:<span> {result.wrongAnswers}</span>
             </p>
+            <h3>Your next product is a Reusable bag</h3>
           </div>
         )}
       </div>
