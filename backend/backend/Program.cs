@@ -36,6 +36,8 @@ builder.Services.AddTransient<ITokenHelper, TokenHelper>();
 builder.Services.AddTransient<IAuthService, AuthService>();
 builder.Services.AddTransient<IAuthRepository, AuthRepository>();
 builder.Services.AddTransient<IProfileRepository, ProfileRepository>();
+builder.Services.AddTransient<IPartnerService, PartnerService>();
+builder.Services.AddTransient<IPartnerRepository, PartnerRepository>();
 builder.Services.AddTransient<InitialSeed>();
 
 builder.Services.AddIdentity<User, Role>()
@@ -82,7 +84,7 @@ var app = builder.Build();
 
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetService<InitialSeed>();
-// seeder.CreateRoles();
+//seeder.CreateRoles();
 
 
 // Configure the HTTP request pipeline.
