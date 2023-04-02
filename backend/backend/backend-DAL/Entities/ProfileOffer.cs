@@ -1,15 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace backend.backend_DAL.Entities
+﻿namespace backend.backend_DAL.Entities
 {
     public class ProfileOffer
     {
+        public int Id { get; set; }
+        public bool IsRedeemed { get; set; }
 
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public Guid? ProfileOfferId { get; set; }
-        public Guid? ProfileId { get; set; }
-        public Profile? Profile { get; set; }
-        public Guid? OfferId { get; set; }
-        public Offer? Offer { get; set; }
+        public int ProfileId { get; set; }
+        public virtual Profile? Profile { get; set; }
+
+        public int OfferId { get; set; }
+        public virtual Offer? Offer { get; set; }
     }
 }

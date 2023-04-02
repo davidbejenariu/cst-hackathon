@@ -21,7 +21,6 @@ namespace backend.Controllers
         {
             try
             {
-
                 Console.WriteLine(registerModel);
                 await _authService.Register(registerModel);
 
@@ -40,7 +39,6 @@ namespace backend.Controllers
         }*/
 
         [HttpPost("Login")]
-
         public async Task<IActionResult> Login([FromBody] LoginModel loginModel)
         {
             var result = await _authService.Login(loginModel);
