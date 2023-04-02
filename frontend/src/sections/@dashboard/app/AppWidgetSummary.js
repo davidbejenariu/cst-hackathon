@@ -6,6 +6,7 @@ import { Card, Typography } from '@mui/material';
 import { fShortenNumber } from '../../../utils/formatNumber';
 // components
 import Iconify from '../../../components/iconify';
+import SurveyLogo from '../../../images/Icons/580745-200.png'
 
 // ----------------------------------------------------------------------
 
@@ -30,7 +31,7 @@ AppWidgetSummary.propTypes = {
   sx: PropTypes.object,
 };
 
-export default function AppWidgetSummary({ title, total, icon, color = 'primary', sx, ...other }) {
+export default function AppWidgetSummary({ title, total, iconpath, color = 'primary', sx, ...other }) {
   return (
     <Card
       sx={{
@@ -41,9 +42,15 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
         bgcolor: (theme) => theme.palette[color].lighter,
         ...sx,
       }}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}
       {...other}
     >
-      <StyledIcon
+
+      <img src ={iconpath} alt='survey' style={{width: '1.9rem', height: '1.9rem', marginLeft: '46%', display:'flex', justifyContent:'center', opacity:'50%'}}/>
+      {/* <StyledIcon
         sx={{
           color: (theme) => theme.palette[color].dark,
           backgroundImage: (theme) =>
@@ -54,9 +61,9 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
         }}
       >
         <Iconify icon={icon} width={24} height={24} />
-      </StyledIcon>
+      </StyledIcon> */}
 
-      <Typography variant="h3">{fShortenNumber(total)}</Typography>
+      <Typography variant="h3" style = {{display:'flex', justifyContent:'center'}}>{fShortenNumber(total) }</Typography>
 
       <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
         {title}
