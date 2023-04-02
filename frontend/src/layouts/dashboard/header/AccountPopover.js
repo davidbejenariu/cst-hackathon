@@ -1,7 +1,9 @@
 import { useState } from 'react';
 // @mui
 import { alpha } from '@mui/material/styles';
-import { Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
+import {  Grid, Container, Box, Divider, Typography, Stack, MenuItem, Avatar, IconButton, Popover } from '@mui/material';
+import { ProgressBar } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // mocks_
 import account from '../../../_mock/account';
 
@@ -26,7 +28,7 @@ const MENU_OPTIONS = [
 
 export default function AccountPopover() {
   const [open, setOpen] = useState(null);
-
+  const percentage = 77;
   const handleOpen = (event) => {
     setOpen(event.currentTarget);
   };
@@ -58,6 +60,9 @@ export default function AccountPopover() {
       </IconButton>
 
       <Popover
+
+        
+
         open={Boolean(open)}
         anchorEl={open}
         onClose={handleClose}
@@ -76,30 +81,58 @@ export default function AccountPopover() {
           },
         }}
       >
-        <Box sx={{ my: 1.5, px: 2.5 }}>
-          <Typography variant="subtitle2" noWrap>
+
+        <Box sx={{ my: 1.5, px: 2.5 , marginBottom:-1}}>
+          <Typography variant="subtitle2" noWrap style={{textAlign: 'center'}}>
             {account.displayName}
           </Typography>
-          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
+          <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap style={{textAlign: 'center', fontSize: '0.6rem'}}>
             {account.email}
           </Typography>
         </Box>
 
+        <Grid container style={{display: 'flex', flexDirection: 'row' }}>
+          <Grid item >
+            <div style={{width: '1.25rem', height: '1.25rem', paddingTop:'1.0rem', marginLeft: '0.5rem'}}>
+              {
+                percentage <= 25 &&  <img src="/assets/badges/badge1.png" className="App-logo" alt="logo" />
+              }
+              {
+                percentage >= 25 && percentage < 50 && <img src="/assets/badges/badge2.png" className="App-logo" alt="logo" />
+              }
+              {
+                percentage >= 50 && percentage < 75 &&  <img src="/assets/badges/badge3.png" className="App-logo" alt="logo" />
+              }
+              {
+                percentage >= 75 &&  <img src="/assets/badges/badge4.png" className="App-logo" alt="logo" />
+              }
+            </div>
+          </Grid>
+          <Grid item>
+            <div className="progressBar" style={{marginBottom:'2rem', marginLeft:'2.0rem', marginRight: '0.5rem'}}>
+              {
+                percentage <= 25 &&   <ProgressBar animated now={percentage} label={`${percentage}%`} min = {0} max = {100} visuallyHidden = 'false' />
+              }
+              {
+                percentage >= 25 && percentage < 50 &&  <ProgressBar animated variant="warning" now={percentage} label={`${percentage}%`} min = {0} max = {100} visuallyHidden = 'false' />
+              }
+              {
+                percentage >= 50 && percentage < 75 &&   <ProgressBar animated variant="danger" now={percentage} label={`${percentage}%`} min = {0} max = {100} visuallyHidden = 'false' />
+              }
+              {
+                percentage >= 75 &&   <ProgressBar animated variant="success" now={percentage} label={`${percentage}%`} min = {0} max = {100} visuallyHidden = 'false' />
+              }
+                
+                <Typography style={{alignContent:'center', fontSize: '0.6rem'}}>
+                  Congrats, you did {percentage}% of your monthly streak!
+                </Typography>
+            </div>
+          </Grid>
+        </Grid>
+
+        <Divider sx={{ borderStyle: 'dashed' }} />
         <Divider sx={{ borderStyle: 'dashed' }} />
 
-        <Stack sx={{ p: 1 }}>
-          {MENU_OPTIONS.map((option) => (
-            <MenuItem key={option.label} onClick={handleClose}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </Stack>
-
-        <Divider sx={{ borderStyle: 'dashed' }} />
-
-        <MenuItem onClick={handleClose} sx={{ m: 1 }}>
-          Logout
-        </MenuItem>
       </Popover>
     </>
   );

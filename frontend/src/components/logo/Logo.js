@@ -3,8 +3,10 @@ import { forwardRef } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 // @mui
 import { useTheme } from '@mui/material/styles';
-import { Box, Link } from '@mui/material';
+import { Box, Link, Typography } from '@mui/material';
+import { fontSize } from '@mui/system';
 import LogoEarth from '../../images/logo.png'
+
 
 // ----------------------------------------------------------------------
 
@@ -29,9 +31,18 @@ const Logo = forwardRef(({ disabledLink = false, sx, ...other }, ref) => {
   }
 
   return (
+    <>
     <Link to="/" component={RouterLink} sx={{ display: 'contents' }}>
       {logo}
     </Link>
+      <Typography style = {{
+        marginLeft: '1rem',
+        marginTop: '0.4rem',
+        fontSize: '1.8rem'
+      }}>
+        Catchy
+      </Typography>
+    </>
   );
 });
 
