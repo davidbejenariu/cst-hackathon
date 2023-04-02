@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend.backend_DAL;
 
@@ -11,9 +12,10 @@ using backend.backend_DAL;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230401174006_AddedEntities")]
+    partial class AddedEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,127 +23,6 @@ namespace backend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Code", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("IsUsed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("Codes");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Offer", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<float?>("CarbonFootprint")
-                        .HasColumnType("real");
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<Guid?>("PartnerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ProductId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("SurveyId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<bool>("isActive")
-                        .HasColumnType("bit");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PartnerId");
-
-                    b.HasIndex("ProductId")
-                        .IsUnique()
-                        .HasFilter("[ProductId] IS NOT NULL");
-
-                    b.HasIndex("SurveyId")
-                        .IsUnique()
-                        .HasFilter("[SurveyId] IS NOT NULL");
-
-                    b.ToTable("Offers");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Partner", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("EmailAddress")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Website")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
-
-                    b.ToTable("Partners");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Product", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Products");
-                });
 
             modelBuilder.Entity("backend.backend_DAL.Entities.Profile", b =>
                 {
@@ -183,39 +64,6 @@ namespace backend.Migrations
                         .IsUnique();
 
                     b.ToTable("Profiles");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.ProfileOffer", b =>
-                {
-                    b.Property<Guid?>("ProfileId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("OfferId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ProfileOfferId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("ProfileId", "OfferId");
-
-                    b.HasIndex("OfferId");
-
-                    b.ToTable("ProfileOffers");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Survey", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Surveys");
                 });
 
             modelBuilder.Entity("backend.backend_DAL.Entities.User", b =>
@@ -440,49 +288,6 @@ namespace backend.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("backend.backend_DAL.Entities.Code", b =>
-                {
-                    b.HasOne("backend.backend_DAL.Entities.Product", "Product")
-                        .WithMany("Codes")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Offer", b =>
-                {
-                    b.HasOne("backend.backend_DAL.Entities.Partner", "Partner")
-                        .WithMany("Offers")
-                        .HasForeignKey("PartnerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("backend.backend_DAL.Entities.Product", "Product")
-                        .WithOne("Offer")
-                        .HasForeignKey("backend.backend_DAL.Entities.Offer", "ProductId");
-
-                    b.HasOne("backend.backend_DAL.Entities.Survey", "Survey")
-                        .WithOne("Offer")
-                        .HasForeignKey("backend.backend_DAL.Entities.Offer", "SurveyId");
-
-                    b.Navigation("Partner");
-
-                    b.Navigation("Product");
-
-                    b.Navigation("Survey");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Partner", b =>
-                {
-                    b.HasOne("backend.backend_DAL.Entities.User", "User")
-                        .WithOne("Partner")
-                        .HasForeignKey("backend.backend_DAL.Entities.Partner", "UserId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("backend.backend_DAL.Entities.Profile", b =>
                 {
                     b.HasOne("backend.backend_DAL.Entities.User", "User")
@@ -492,25 +297,6 @@ namespace backend.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.ProfileOffer", b =>
-                {
-                    b.HasOne("backend.backend_DAL.Entities.Offer", "Offer")
-                        .WithMany("ProfileOffers")
-                        .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("backend.backend_DAL.Entities.Profile", "Profile")
-                        .WithMany("ProfileOffers")
-                        .HasForeignKey("ProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Offer");
-
-                    b.Navigation("Profile");
                 });
 
             modelBuilder.Entity("backend.backend_DAL.Entities.UserRefreshToken", b =>
@@ -575,37 +361,8 @@ namespace backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.backend_DAL.Entities.Offer", b =>
-                {
-                    b.Navigation("ProfileOffers");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Partner", b =>
-                {
-                    b.Navigation("Offers");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Product", b =>
-                {
-                    b.Navigation("Codes");
-
-                    b.Navigation("Offer");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Profile", b =>
-                {
-                    b.Navigation("ProfileOffers");
-                });
-
-            modelBuilder.Entity("backend.backend_DAL.Entities.Survey", b =>
-                {
-                    b.Navigation("Offer");
-                });
-
             modelBuilder.Entity("backend.backend_DAL.Entities.User", b =>
                 {
-                    b.Navigation("Partner");
-
                     b.Navigation("Profile");
 
                     b.Navigation("RefreshTokens");

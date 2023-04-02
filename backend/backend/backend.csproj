@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="backend-BLL\Interfaces\NewFile.txt" />
+    <None Remove="backend-BLL\Models\NewFile.txt" />
+    <None Remove="backend-BLL\Services\NewFile.txt" />
+    <None Remove="backend-DAL\Interfaces\NewFile.txt" />
+    <None Remove="backend-DAL\Repositories\NewFile.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="6.0.7" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.15" />
