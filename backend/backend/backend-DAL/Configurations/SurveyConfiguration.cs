@@ -10,10 +10,6 @@ namespace backend.backend_DAL.Configurations
         {
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Name)
-                .HasColumnType("nvarchar(100)")
-                .IsRequired(true);
-
             builder.Property(x => x.OfferId)
                 .IsRequired(false);
 
