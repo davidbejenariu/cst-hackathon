@@ -1,4 +1,6 @@
+import { on } from 'events'
 import React, { useState } from 'react'
+import Button from '@mui/material/Button'
 
 const quiz = {
     topic: 'Javascript',
@@ -84,6 +86,11 @@ const quiz = {
         setSelectedAnswer(false)
       }
     }
+    function handleKeyDown(e) {
+        if (e.keyCode === 13) {
+          onAnswerSelected(e.answer, e.index);
+        }
+      }
   
     const addLeadingZero = (number) => (number > 9 ? number : `0${number}`)
   
@@ -102,14 +109,14 @@ const quiz = {
             <h2>{question}</h2>
             <ul>
               {choices.map((answer, index) => (
-                <li onClick={() => onAnswerSelected(answer, index)}
+                <Button role = "button" onClick={() => onAnswerSelected(answer, index)} onKeyDown={(answer, index)}
                   key={answer}
                   className={
                     selectedAnswerIndex === index ? 'selected-answer' : null
                   }
                 >
                   {answer}
-                </li>
+                </Button>
               ))}
             </ul>
             <div className="flex-right">
