@@ -84,6 +84,7 @@ export default function Nav({ openNav, onCloseNav }) {
   return (
     <Box
       component="nav"
+      
       sx={{
         flexShrink: { lg: 0 },
         width: { lg: NAV_WIDTH },
@@ -96,7 +97,7 @@ export default function Nav({ openNav, onCloseNav }) {
           PaperProps={{
             sx: {
               width: NAV_WIDTH,
-              bgcolor: 'background.default',
+              bgcolor: '#c1dab7',
               borderRightStyle: 'dashed',
             },
           }}

@@ -102,12 +102,13 @@ export default function NotificationsPopover() {
 
   return (
     <>
+    <Tooltip title="Notifications">
       <IconButton color={open ? 'primary' : 'default'} onClick={handleOpen} sx={{ width: 40, height: 40 }}>
         <Badge badgeContent={totalUnRead} color="error">
           <Iconify icon="eva:bell-fill" />
         </Badge>
       </IconButton>
-
+      </Tooltip>
       <Popover
         open={Boolean(open)}
         anchorEl={open}

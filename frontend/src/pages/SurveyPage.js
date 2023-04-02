@@ -14,7 +14,7 @@ export default function SurveyPage() {
   return (
     <>
       <Helmet>
-        <title> Dashboard: Blog | Minimal UI </title>
+        <title> Survey| Catchy </title>
       </Helmet>
         <Card>
             <Container>
