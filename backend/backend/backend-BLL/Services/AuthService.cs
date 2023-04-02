@@ -22,22 +22,18 @@ namespace backend.backend_BLL.Services
             _signInManager = signInManager;
             _tokenHelper = tokenHelper;
             _profileRepository = profileRepository;
-            
- 
         }
-
-
-
 
         public async Task<LoginResult> Login(LoginModel loginModel)
         {
             var user = await _userManager.FindByEmailAsync(loginModel.Email);
             if (user == null)
+            {
                 return new LoginResult
                 {
                     Success = false
-
                 };
+            }
             else
             {
                 var result = await _signInManager.CheckPasswordSignInAsync(user, loginModel.Password, false);
@@ -51,14 +47,15 @@ namespace backend.backend_BLL.Services
                         Success = true,
                         AccessToken = token,
                         RefreshToken = refreshToken
-
                     };
                 }
                 else
+                {
                     return new LoginResult
                     {
                         Success = false
                     };
+                }
             }
 
         }
@@ -74,16 +71,13 @@ namespace backend.backend_BLL.Services
             {
                 FirstName = registerModel.FirstName,
                 LastName = registerModel.LastName,
-                User = user,
                 UserId = user.Id
             };
             await _profileRepository.CreateProfile(profile);
 
-
             if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, "BasicUser");
-                
 
                 //await SaveChangesAsync();
 
@@ -108,7 +102,6 @@ namespace backend.backend_BLL.Services
             {
                 throw new Exception(String.Join(",", result.Errors.Select(x => x.Code)));
             }
-
         }
     }
 
@@ -163,4 +156,3 @@ namespace backend.backend_BLL.Services
     }*/
 //}
 }
-

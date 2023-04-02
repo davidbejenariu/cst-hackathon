@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using backend.backend_DAL;
 
@@ -11,9 +12,10 @@ using backend.backend_DAL;
 namespace backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230402035155_UserRole")]
+    partial class UserRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -60,7 +62,7 @@ namespace backend.Migrations
                     b.Property<DateTime>("CreationDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime")
-                        .HasDefaultValue(new DateTime(2023, 4, 2, 4, 5, 40, 270, DateTimeKind.Utc).AddTicks(2928));
+                        .HasDefaultValue(new DateTime(2023, 4, 2, 3, 51, 55, 668, DateTimeKind.Utc).AddTicks(2991));
 
                     b.Property<DateTime?>("EndDate")
                         .HasColumnType("datetime");
@@ -629,9 +631,15 @@ namespace backend.Migrations
 
             modelBuilder.Entity("backend.backend_DAL.Entities.UserRole", b =>
                 {
+                    b.HasOne("backend.backend_DAL.Entities.Role", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("backend.backend_DAL.Entities.Role", "Role")
                         .WithMany("UserRole")
-                        .HasForeignKey("RoleId")
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
