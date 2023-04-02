@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import { display } from '@mui/system';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { useNavigate } from 'react-router-dom';
 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -12,14 +13,16 @@ import { data } from '../../_mock/offers-mock';
 
 
 export default function HorizontalScroll() {
-
+  const navigate = useNavigate();
   const [opacity, setOpacity] = useState("0.5")
 
   const sliderStyle = {
     cursor: "pointer",
     opacity: `${opacity}`
   }
-  
+  const handleClick = () => {
+    navigate('/my-offers/survey', { replace: true });
+  };
   const offerStyle = {
     display: "inline-block",
     margin: '1rem',
@@ -83,7 +86,7 @@ export default function HorizontalScroll() {
                 </CardContent>
                 </CardActionArea>
                 <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick = {handleClick}>
                     Take the survey
                 </Button>
                 </CardActions>

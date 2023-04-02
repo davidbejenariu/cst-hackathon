@@ -82,6 +82,11 @@ builder.Services.Configure<IdentityOptions>(options =>
 var app = builder.Build();
 
 
+app.UseCors(options =>
+options.WithOrigins("*")
+.AllowAnyMethod()
+.AllowAnyHeader());
+
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetService<InitialSeed>();
 seeder.CreateRoles();

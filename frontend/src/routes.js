@@ -11,6 +11,8 @@ import ProductsPage from './pages/Offers';
 import HomePage from './pages/HomePage';
 import Profile from './pages/ProfilePage';
 import RegisterPage from './pages/RegisterPage';
+import SurveyPage from './pages/SurveyPage';
+import QuizPage from './pages/QuizPage';
 
 // ----------------------------------------------------------------------
 
@@ -33,6 +35,13 @@ export default function Router() {
       path: 'login',
       element: <LoginPage />,
     },{
+      path: 'survey',
+      element: <SurveyPage />,
+    },{
+      path: 'quiz',
+      element: <QuizPage />,
+    },
+    {
       path: 'register',
       element: <RegisterPage />,
     },
