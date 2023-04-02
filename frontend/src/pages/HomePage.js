@@ -3,6 +3,8 @@ import { faker } from '@faker-js/faker';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
+import { ProgressBar } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 // components
 import Iconify from '../components/iconify';
 // sections
@@ -13,7 +15,7 @@ import {
 
 export default function HomePage() {
   const theme = useTheme();
-
+  const percentage = 77;
   return (
     <>
     
@@ -25,7 +27,45 @@ export default function HomePage() {
         <Typography variant="h4" sx={{ mb: 5 }}>
           Hi, Welcome back
         </Typography>
-
+        <Grid container style={{display: 'flex', flexDirection: 'row' }}>
+          <Grid item >
+            <div style={{width: '1.9rem', height: '1.9rem'}}>
+              {
+                percentage <= 25 &&  <img src="/assets/badges/badge1.png" className="App-logo" alt="logo" />
+              }
+              {
+                percentage >= 25 && percentage < 50 && <img src="/assets/badges/badge2.png" className="App-logo" alt="logo" />
+              }
+              {
+                percentage >= 50 && percentage < 75 &&  <img src="/assets/badges/badge3.png" className="App-logo" alt="logo" />
+              }
+              {
+                percentage >= 75 &&  <img src="/assets/badges/badge4.png" className="App-logo" alt="logo" />
+              }
+            </div>
+          </Grid>
+          <Grid item sm={7} md={6}>
+            <div className="progressBar" style={{marginBottom:'2rem', marginLeft:'0.5rem'}}>
+              {
+                percentage <= 25 &&   <ProgressBar animated now={percentage} label={`${percentage}%`} min = {0} max = {100} visuallyHidden = 'false' />
+              }
+              {
+                percentage >= 25 && percentage < 50 &&  <ProgressBar animated variant="warning" now={percentage} label={`${percentage}%`} min = {0} max = {100} visuallyHidden = 'false' />
+              }
+              {
+                percentage >= 50 && percentage < 75 &&   <ProgressBar animated variant="danger" now={percentage} label={`${percentage}%`} min = {0} max = {100} visuallyHidden = 'false' />
+              }
+              {
+                percentage >= 75 &&   <ProgressBar animated variant="success" now={percentage} label={`${percentage}%`} min = {0} max = {100} visuallyHidden = 'false' />
+              }
+                
+                <Typography style={{alignContent:'center'}}>
+                  Congrats, you did {percentage}% of your monthly streak!
+                </Typography>
+            </div>
+          </Grid>
+        </Grid>
+       
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Surveys Completed" total={2} icon={'ant-design:android-filled'} />
@@ -36,17 +76,8 @@ export default function HomePage() {
           </Grid>
 
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Item Orders" total={1723315} color="warning" icon={'ant-design:windows-filled'} />
+            <AppWidgetSummary title="Daily streak" total={5} color="warning" icon={'ant-design:windows-filled'} />
           </Grid>
-
-          <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Bug Reports" total={234} color="error" icon={'ant-design:bug-filled'} />
-          </Grid>
-
-          {/* <Grid item xs={12} md={6} lg={8}>
-            
-          </Grid> */}
-
         </Grid>
       </Container>
     </>
