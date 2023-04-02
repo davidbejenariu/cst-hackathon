@@ -6,6 +6,6 @@ namespace backend.backend_BLL.Interfaces
     {
         Task Create(PartnerModel partner);
         Task<List<PartnerModel>> GetPartners();
-        Task RegisterPartner(int id, RegisterModel registerModel);
+        Task RegisterPartner(string id, RegisterModel registerModel);
     }
 }

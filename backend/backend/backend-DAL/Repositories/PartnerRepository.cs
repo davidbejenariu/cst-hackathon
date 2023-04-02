@@ -24,9 +24,9 @@ namespace backend.backend_DAL.Repositories
             return partners;
         }
 
-        public async Task<Partner> GetById(int id)
+        public async Task<Partner> GetById(string id)
         {
-            return _db.Partners.FirstOrDefault(x => x.Id == id);
+            return _db.Partners.FirstOrDefault(x => x.Id.Equals(id));
 
         }
     }

@@ -6,6 +6,6 @@ namespace backend.backend_DAL.Interfaces
     {
         Task Create(Partner partner);
         Task<List<Partner>> GetAllPartners();
-        Task<Partner> GetById(int id);
+        Task<Partner> GetById(string id);
     }
 }

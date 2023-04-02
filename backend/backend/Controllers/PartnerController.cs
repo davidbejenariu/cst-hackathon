@@ -15,7 +15,7 @@ namespace backend.Controllers
             _partnerService = partnerService;
         }
 
-        [HttpPost]
+        [HttpPost("CreatePartner")]
         public async Task<IActionResult> Post([FromBody] PartnerModel partner)
         {
             await _partnerService.Create(partner);
@@ -23,20 +23,20 @@ namespace backend.Controllers
         }
 
         [HttpGet("GetAllPartners")]
-        public async Task<List<PartnerModel>> GetAllCodes()
+        public async Task<List<PartnerModel>> GetAllPartners()
         {
             var list = await _partnerService.GetPartners();
             return list;
         }
 
         [HttpPut("AddPartnerRepresentant/{id}")]
-        public async Task<IActionResult> AddPartnerRepresentant([FromRoute] int partnerId, [FromBody] RegisterModel registerModel)
+        public async Task<IActionResult> AddPartnerRepresentant([FromRoute] string id, [FromBody] RegisterModel registerModel)
         {
             try
             {
 
                 Console.WriteLine(registerModel);
-                await _partnerService.RegisterPartner(partnerId, registerModel);
+                await _partnerService.RegisterPartner(id, registerModel);
 
                 return Ok();
             }

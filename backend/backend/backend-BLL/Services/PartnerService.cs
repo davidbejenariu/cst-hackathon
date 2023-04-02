@@ -8,16 +8,18 @@ namespace backend.backend_BLL.Services
 {
     public class PartnerService : IPartnerService
     {
-        private readonly IPartnerService _partnerService;
+       
         private readonly IPartnerRepository _partnerRepository;
         private readonly UserManager<User> _userManager;
         private readonly IProfileRepository _profileRepository;
 
 
-        public PartnerService(IPartnerService partnerService, IPartnerRepository partnerRepository)
+        public PartnerService(IPartnerRepository partnerRepository, UserManager<User> userManager, IProfileRepository profileRepository)
         {
-            _partnerService = partnerService;
+            
             _partnerRepository = partnerRepository;
+            _userManager = userManager;
+            _profileRepository = profileRepository;
         }
 
         public async Task Create(PartnerModel partner)
@@ -28,7 +30,7 @@ namespace backend.backend_BLL.Services
                 Website = partner.Website,
                 Image = partner.Image
             };
-            _partnerRepository.Create(newPartner);
+            await _partnerRepository.Create(newPartner);
 
         }
         public async Task<List<PartnerModel>> GetPartners()
@@ -49,7 +51,7 @@ namespace backend.backend_BLL.Services
 
         }
 
-        public async Task RegisterPartner(int id, RegisterModel registerModel)
+        public async Task RegisterPartner(string id, RegisterModel registerModel)
         {
             var user = new User
             {
@@ -61,7 +63,6 @@ namespace backend.backend_BLL.Services
             {
                 FirstName = registerModel.FirstName,
                 LastName = registerModel.LastName,
-                User = user,
                 UserId = user.Id,
                 PartnerId = id
             };
