@@ -4,6 +4,8 @@
 
 ## Theme: Develop a solution in order to positively impact the Environment by using Gamification techniques.
 
+![](https://github.com/davidbejenariu/cst-hackathon/blob/main/Assets/Catchy_Presentation/1_README.png)
+
 ## Our approach
 
 ### Mission
