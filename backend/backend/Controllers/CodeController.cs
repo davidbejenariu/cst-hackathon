@@ -25,7 +25,7 @@ namespace backend.Controllers
         }
 
         [HttpGet("GetAllCodes")]
-        public async Task<List<Guid>> GetAllCodes()
+        public async Task<List<string>> GetAllCodes()
         {
             var list = await _codeService.GetCodes();
             return list;
